@@ -3,7 +3,7 @@ package ru.urfu;
 /**
  * Класс для обработки сообщений
  */
-public class MassageHandler {
+public class MessageHandler {
     /**
      * Обрабаывает и формирует ответ на сообщение пользователя
      * @param messageFromUser текст сообщения от пользователя

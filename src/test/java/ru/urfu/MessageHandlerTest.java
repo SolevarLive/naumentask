@@ -1,19 +1,21 @@
 package ru.urfu;
 
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Тестовый класс для проверки функциональности класса MassageHandler.
+ * Тестовый класс для проверки функциональности класса MessageHandler.
  */
-class MassageHandlerTest {
+class MessageHandlerTest {
 
     /**
      * Проверяет, что метод createResponse возвращает правильный ответ
      * для стандартного входного сообщения.
      */
-    @org.junit.jupiter.api.Test
+    @Test
     void createResponse_ReturnResponse() {
-        MassageHandler messageHandler = new MassageHandler();
+        MessageHandler messageHandler = new MessageHandler();
         String inputMessage = "Привет, бот!";
         String expectedResponse = "Ваше сообщение: Привет, бот!";
 
@@ -26,9 +28,9 @@ class MassageHandlerTest {
      * Проверяет, что метод createResponse возвращает корректный ответ
      * для пустого входного сообщения.
      */
-    @org.junit.jupiter.api.Test
+    @Test
     void createResponse_ReturnsAnEmptyMessage() {
-        MassageHandler messageHandler = new MassageHandler();
+        MessageHandler messageHandler = new MessageHandler();
         String inputMessage = "";
         String expectedResponse = "Ваше сообщение: ";
 
@@ -41,9 +43,9 @@ class MassageHandlerTest {
      * Проверяет, что метод createResponse корректно обрабатывает
      * входные сообщения, состоящие только из пробелов.
      */
-    @org.junit.jupiter.api.Test
+    @Test
     void createResponse_HandlesWhitespace() {
-        MassageHandler messageHandler = new MassageHandler();
+        MessageHandler messageHandler = new MessageHandler();
         String inputMessage = "   ";
         String expectedResponse = "Ваше сообщение:    ";
 

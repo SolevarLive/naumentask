@@ -14,7 +14,7 @@ import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 public class TelegramBot extends TelegramLongPollingBot {
 
     private final String telegramBotName;
-    private final MassageHandler messageHandler;
+    private final MessageHandler messageHandler;
 
     /**
      * Конструктор для создания экземпляра бота.
@@ -23,7 +23,7 @@ public class TelegramBot extends TelegramLongPollingBot {
      * @param token для доступа к API Telegram
      * @param messageHandler обработчик сообщений
      */
-    public TelegramBot(String telegramBotName, String token, MassageHandler messageHandler) {
+    public TelegramBot(String telegramBotName, String token, MessageHandler messageHandler) {
         super(token);
         this.telegramBotName = telegramBotName;
         this.messageHandler = messageHandler;

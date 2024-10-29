@@ -15,7 +15,7 @@ public class DiscordBot {
     private final String token;
 
     private GatewayDiscordClient client;
-    private final MassageHandler messageHandler;
+    private final MessageHandler messageHandler;
 
     /**
      * Конструктор для создания экземпляра DiscordBot
@@ -23,7 +23,7 @@ public class DiscordBot {
      * @param token для распознования бота в Discord
      * @param messageHandler обработчик сообщений и генерации ответов
      */
-    public DiscordBot(String token, MassageHandler messageHandler) {
+    public DiscordBot(String token, MessageHandler messageHandler) {
         this.token = token;
         this.messageHandler = messageHandler;
     }
@@ -50,6 +50,7 @@ public class DiscordBot {
                         sendMessage(chatId, responseMessage);
                     }
                 });
+        System.out.println("Discord бот запущен");
         System.out.println("Discord бот запущен");
         client.onDisconnect().block();
     }

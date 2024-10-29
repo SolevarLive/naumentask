@@ -6,7 +6,7 @@ package ru.urfu;
 public class Application {
 
     public static void main(String[] args) {
-        MassageHandler messageHandler = new MassageHandler();
+        MessageHandler messageHandler = new MessageHandler();
         String telegramBotName = System.getenv("telegram_botName");
         String telegramToken = System.getenv("telegram_token");
         new TelegramBot(telegramBotName, telegramToken, messageHandler)
