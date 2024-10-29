@@ -14,14 +14,24 @@ import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 public class TelegramBot extends TelegramLongPollingBot {
 
     private final String telegramBotName;
-    private final MassageHandler massageHandler;
+    private final MassageHandler messageHandler;
 
-    public TelegramBot(String telegramBotName, String token, MassageHandler massageHandler) {
+    /**
+     * Конструктор для создания экземпляра бота.
+     *
+     * @param telegramBotName имя бота
+     * @param token для доступа к API Telegram
+     * @param messageHandler обработчик сообщений
+     */
+    public TelegramBot(String telegramBotName, String token, MassageHandler messageHandler) {
         super(token);
         this.telegramBotName = telegramBotName;
-        this.massageHandler = massageHandler;
+        this.messageHandler = messageHandler;
     }
 
+    /**
+     * Запускт бота и обработка входящих сообщений.
+     */
     public void start() {
         try {
             TelegramBotsApi botsApi = new TelegramBotsApi(DefaultBotSession.class);
@@ -32,13 +42,18 @@ public class TelegramBot extends TelegramLongPollingBot {
         }
     }
 
+    /**
+     * Обрабатывает входящие обновления от Telegram
+     *
+     * @param update содержит сообщение от пользователя
+     */
     @Override
     public void onUpdateReceived(Update update) {
         if (update.hasMessage() && update.getMessage().hasText()) {
             Message updateMessage = update.getMessage();
             Long chatId = updateMessage.getChatId();
             String messageFromUser = updateMessage.getText();
-            String responseMessage = massageHandler.createResponse(messageFromUser);
+            String responseMessage = messageHandler.createResponse(messageFromUser);
 
             sendMessage(chatId.toString(), responseMessage);
         }
@@ -61,6 +76,9 @@ public class TelegramBot extends TelegramLongPollingBot {
         }
     }
 
+    /**
+     * Возвращает имя бота
+     */
     @Override
     public String getBotUsername() {
         return telegramBotName;

@@ -15,13 +15,22 @@ public class DiscordBot {
     private final String token;
 
     private GatewayDiscordClient client;
-    private final MassageHandler massageHandler;
+    private final MassageHandler messageHandler;
 
-    public DiscordBot(String token, MassageHandler massageHandler) {
+    /**
+     * Конструктор для создания экземпляра DiscordBot
+     *
+     * @param token для распознования бота в Discord
+     * @param messageHandler обработчик сообщений и генерации ответов
+     */
+    public DiscordBot(String token, MassageHandler messageHandler) {
         this.token = token;
-        this.massageHandler = massageHandler;
+        this.messageHandler = messageHandler;
     }
 
+    /**
+     * Запускт бота и обработка входящих сообщений
+     */
     public void start() {
         client = DiscordClient.create(token).login().block();
         if (client == null) {
@@ -36,7 +45,7 @@ public class DiscordBot {
                     if (eventMessage.getAuthor().map(user -> !user.isBot()).orElse(false)) {
                         String chatId = eventMessage.getChannelId().asString();
                         String messageFromUser = eventMessage.getContent();
-                        String responseMessage = massageHandler.createResponse(messageFromUser);
+                        String responseMessage = messageHandler.createResponse(messageFromUser);
 
                         sendMessage(chatId, responseMessage);
                     }

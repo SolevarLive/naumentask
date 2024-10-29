@@ -5,10 +5,10 @@ package ru.urfu;
  */
 public class MassageHandler {
     /**
-     * Формирует ответ на сообщение пользователя
+     * Обрабаывает и формирует ответ на сообщение пользователя
      * @param messageFromUser текст сообщения от пользователя
      */
     public String createResponse(String messageFromUser){
-        return "Ваше сообщение " + messageFromUser;
+        return String.format("Ваше сообщение: %s", messageFromUser);
     }
 }
